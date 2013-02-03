@@ -11,6 +11,6 @@ lib/WWW/Search/CraigsList.pm
 Makefile.PL
 MANIFEST			This list of files
 META.yml
-README
+README.md
 t/dummy.t
 t/pod.t
