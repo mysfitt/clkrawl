@@ -89,10 +89,10 @@ if ($opt_o) {
 
 if ($opt_e) {
   my $smtp = new Net::SMTP::TLS(
-	  'smtp.gmail.com',
-	  Port    =>	587,
-	  User    =>	'joseph.reeves@gmail.com',
-	  Password=>	'n0tinf0cus',
+	  $ENV{'EMAIL_HOST'},
+	  Port    =>	$ENV{EMAIL_PORT},
+	  User    =>	$ENV{'EMAIL_USER'},
+	  Password=>	$ENV{'EMAIL_PASS'},
 	  Timeout =>	30
   );
 
@@ -100,7 +100,7 @@ if ($opt_e) {
   $subject_line = 'CLKrawl Listings :: Location: ' . $opt_l . ' :: Category: ' . $opt_c;
   $body_line = 'Date: ' . $mon . '/' . $mday . ', ' . ($year += 1900) . '</br>Location: ' . $opt_l . '</br>Category: ' . $opt_c .'</br>Search Terms: ' . $opt_s;
   #  -- Enter email FROM below.   --
-  $smtp->mail('clkrawl@sephr.org');
+  $smtp->mail('clkrawl@example.com');
 
   #  -- Enter recipient mails addresses below (only one for now)--
   $smtp->recipient($opt_e);
