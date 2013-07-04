@@ -180,6 +180,7 @@ sub parse_tree
       } # if
     my $sPoster = 'unknown';
     my $hit = new WWW::SearchResult;
+    if (!($sURL =~ /http/)) { $sURL = $self->{'search_base_url'} . $sURL; }
     $hit->add_url($sURL);
     $hit->title($sTitle);
     $hit->change_date($sDate);
