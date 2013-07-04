@@ -20,6 +20,7 @@ requires('URI');
 requires('WWW::Search');
 # We need the function WWW::Search::Test::tm_run_test_no_approx():
 requires('WWW::Search::Test' => 2.271);
+requires('Net::SMTP::TLS');
 
 WriteAll;
 
