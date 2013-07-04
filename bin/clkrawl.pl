@@ -6,6 +6,7 @@
 use WWW::Search;
 use Getopt::Std;
 use Net::SMTP::TLS;
+use Data::Dumper;
 
 # define categories
 my %category = (
@@ -37,7 +38,7 @@ my %location = (
   'Scranton' => 'scranton',
 );
 
-getopts('l:m:x:c:e:s:hpo');
+getopts('l:m:x:c:e:s:hpod');
 
 unless($opt_l && $opt_c && $opt_s || $opt_h) {
   print "Usage: $0 -l LOCATION -c CATEGORY -s SEARCH [-m MIN] [-x MAX]\n\t[-e email\@address] [-p] [-o] [-h]\n";
@@ -75,9 +76,17 @@ if (! $oSearch->response->is_success) {
 } # if
 
 while (my $oResult = $oSearch->next_result()) {
-  my $url = $oResult->url;
+  my $url = "http://$location{$opt_l}.craigslist.com" . $oResult->url;
   my $title = $oResult->title;
   push @listings, '<a href="' . $url . '">' . $title . '</a></br>' . "\n";
+}
+
+if ($opt_d) {
+  print "++++ DEBUG OUTPUT ++++\n";
+  print "Search Object: \n";
+  print Dumper($oSearch) . "\n";
+  print "Listings (if any): \n";
+  print @listings . "\n";
 }
 
 if ($opt_o) {
