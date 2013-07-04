@@ -88,7 +88,7 @@ sub native_setup_search
                          minAsk => $rhOptsArg->{'Min'},
                          maxAsk => $rhOptsArg->{'Max'},
                          hasPic => $rhOptsArg->{'Pic'},
-                         addTwo => '',
+                         srchType => 'A',
                          query => $sQuery,
                         };
   my $rhOptions = $self->{'_options'};
@@ -148,7 +148,7 @@ sub parse_tree
     {
     my $s = $oTD->as_text;
     print STDERR " DDD approx TD is ==$s==\n" if (2 <= $self->{_debug});
-    if ($s =~ m!Found: ([0-9,]+) Displaying: [0-9,]+ - [0-9,]+!)
+    if ($s =~ m!found ([0-9,]+) postings!)
       {
       my $s1 = $1;
       $s1 =~ s!,!!g;
