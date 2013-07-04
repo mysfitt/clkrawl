@@ -15,7 +15,6 @@ build_requires('ExtUtils::testlib');
 requires('HTML::Parse');
 requires('HTML::TreeBuilder');
 build_requires('Test::More');
-build_recommends('Test::Pod');
 requires('URI');
 requires('WWW::Search');
 # We need the function WWW::Search::Test::tm_run_test_no_approx():
