@@ -166,7 +166,7 @@ sub parse_tree
     next A_TAG unless ref($oA);
     my $oP = $oA->parent;
     next A_TAG unless ref($oP);
-    next A_TAG unless ($oP->tag eq 'p');
+    next A_TAG unless ($oP->tag eq 'span');
     my $sTitle = $oA->as_text || '';
     my $sURL = $oA->attr('href') || '';
     next A_TAG unless ($sURL ne '');
