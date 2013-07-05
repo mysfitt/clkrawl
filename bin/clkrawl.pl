@@ -79,7 +79,7 @@ while (my $oResult = $oSearch->next_result()) {
   my $url = $oResult->url;
   my $title = $oResult->title();
   if (! $title) { $title = "CL Link"; }
-  push @listings, '<a href="' . $url . '">' . $title . '</a></br>' . "\n";
+  push @listings, '<p><a href="' . $url . '">' . $title . '</a></p>' . "\n";
 }
 
 if ($opt_d) {
